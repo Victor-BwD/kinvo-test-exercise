@@ -10,11 +10,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Tipo {
+  entrada
+  saida
+}
+
 model Movimentacoes {
   id            Int       @id @default(autoincrement())
   id_categoria  Int
   descricao     String    @db.VarChar(120)
   valor         Float
+  tipo          Tipo
   data          DateTime  @db.Timestamp(0)
   created_at    DateTime  @default(now())
   updated_at    DateTime  @updatedAt

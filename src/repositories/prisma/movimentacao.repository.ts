@@ -8,6 +8,7 @@ class MovimentacaoRepository extends BasePrismaRepository implements IMovimentac
         id_categoria: movimentacaoDTO.id_categoria,
         descricao: movimentacaoDTO.descricao,
         valor: movimentacaoDTO.valor,
+        tipo: movimentacaoDTO.tipo,
         data: movimentacaoDTO.data
       }
     });
