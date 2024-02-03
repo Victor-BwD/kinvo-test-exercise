@@ -1,6 +1,7 @@
 import express, { type Application } from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
+import { movimentacaoRouter } from "../routes/movimentacao.routes";
 
 class App {
   public server: Application;
@@ -16,7 +17,9 @@ class App {
     this.server.use(bodyParser.json());
   }
 
-  initRoutes() {}
+  initRoutes() {
+    this.server.use(movimentacaoRouter);
+  }
 }
 
 export default new App().server;
