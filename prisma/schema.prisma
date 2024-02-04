@@ -38,3 +38,9 @@ model Categorias {
   updated_at    DateTime  @updatedAt
   movimentacoes Movimentacoes[]
 }
+
+model saldo {
+  id            Int       @id @default(autoincrement())
+  valor         Float
+  updated_at    DateTime  @updatedAt
+}
