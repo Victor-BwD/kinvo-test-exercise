@@ -2,8 +2,9 @@ import {
   IMovimentacaoRepository,
   crateMovimentacaoDTO
 } from "../repositories/prisma/interfaces/movimentacao.repository.type";
+import { IMovimentacaoService } from "./movimentacao.service.type";
 
-class MovimentacaoServices {
+class MovimentacaoServices implements IMovimentacaoService {
   movimentacaoRepository: IMovimentacaoRepository;
 
   constructor(movimentacaoRepository: IMovimentacaoRepository) {

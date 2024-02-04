@@ -2,6 +2,7 @@ import express, { type Application } from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import { movimentacaoRouter } from "../routes/movimentacao.routes";
+import { saldoRoutes } from "../routes/saldo.routes";
 
 class App {
   public server: Application;
@@ -19,6 +20,7 @@ class App {
 
   initRoutes() {
     this.server.use(movimentacaoRouter);
+    this.server.use(saldoRoutes);
   }
 }
 

@@ -13,6 +13,15 @@ class MovimentacaoRepository extends BasePrismaRepository implements IMovimentac
       }
     });
 
+    await this.prisma.saldo.update({
+      where: { id: 1 },
+      data: {
+        valor: {
+          increment: movimentacaoDTO.tipo === "saida" ? -movimentacaoDTO.valor : movimentacaoDTO.valor
+        }
+      }
+    });
+
     return movimentacao;
   }
 }
