@@ -8,6 +8,10 @@ class SaldoServices {
   }
 
   async create(saldoDTO: createSaldoDTO) {
+    if (saldoDTO.valor < 0) {
+      throw new Error("Saldo não pode ser negativo");
+    }
+
     return await this.saldoRepository.create(saldoDTO);
   }
 }
