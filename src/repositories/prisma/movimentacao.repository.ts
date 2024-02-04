@@ -24,6 +24,10 @@ class MovimentacaoRepository extends BasePrismaRepository implements IMovimentac
 
     return movimentacao;
   }
+
+  async list() {
+    return await this.prisma.movimentacoes.findMany();
+  }
 }
 
 export { MovimentacaoRepository };

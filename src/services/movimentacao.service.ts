@@ -14,6 +14,16 @@ class MovimentacaoServices implements IMovimentacaoService {
   async create(movimentacaoDTO: crateMovimentacaoDTO) {
     return await this.movimentacaoRepository.create(movimentacaoDTO);
   }
+
+  async list() {
+    const listMovimentacao = await this.movimentacaoRepository.list();
+
+    if (listMovimentacao.length <= 0) {
+      throw new Error("Nenhuma movimentação encontrada");
+    }
+
+    return listMovimentacao;
+  }
 }
 
 export { MovimentacaoServices };

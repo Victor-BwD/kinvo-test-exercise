@@ -3,6 +3,7 @@ import { crateMovimentacaoDTO } from "../repositories/prisma/interfaces/moviment
 
 interface IMovimentacaoService {
   create(movimentacaoDTO: crateMovimentacaoDTO): Promise<IMovimentacao>;
+  list(): Promise<IMovimentacao[]>;
 }
 
 export { IMovimentacaoService };
