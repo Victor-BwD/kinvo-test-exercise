@@ -1,9 +1,12 @@
 import { IMovimentacao } from "../domain";
-import { crateMovimentacaoDTO } from "../repositories/prisma/interfaces/movimentacao.repository.type";
+import {
+  IMovimentacaoQueryParams,
+  crateMovimentacaoDTO
+} from "../repositories/prisma/interfaces/movimentacao.repository.type";
 
 interface IMovimentacaoService {
   create(movimentacaoDTO: crateMovimentacaoDTO): Promise<IMovimentacao>;
-  list(): Promise<IMovimentacao[]>;
+  list(dataMovimentacao: IMovimentacaoQueryParams): Promise<IMovimentacao[]>;
   update(id: number, movimentacaoDTO: crateMovimentacaoDTO): Promise<IMovimentacao>;
 }
 

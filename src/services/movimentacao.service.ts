@@ -1,4 +1,5 @@
 import {
+  IMovimentacaoQueryParams,
   IMovimentacaoRepository,
   crateMovimentacaoDTO
 } from "../repositories/prisma/interfaces/movimentacao.repository.type";
@@ -15,8 +16,8 @@ class MovimentacaoServices implements IMovimentacaoService {
     return await this.movimentacaoRepository.create(movimentacaoDTO);
   }
 
-  async list() {
-    const listMovimentacao = await this.movimentacaoRepository.list();
+  async list(dataMovimentacao: IMovimentacaoQueryParams) {
+    const listMovimentacao = await this.movimentacaoRepository.list(dataMovimentacao);
 
     if (listMovimentacao.length <= 0) {
       throw new Error("Nenhuma movimentação encontrada");

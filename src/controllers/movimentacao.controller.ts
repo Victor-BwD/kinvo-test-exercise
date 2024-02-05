@@ -2,6 +2,7 @@ import { PrismaClient } from "@prisma/client";
 
 import { IMovimentacaoController } from "./movimentacao.controller.type";
 import {
+  IMovimentacaoQueryParams,
   IMovimentacaoRepository,
   crateMovimentacaoDTO
 } from "../repositories/prisma/interfaces/movimentacao.repository.type";
@@ -23,8 +24,8 @@ class MovimentacaoController implements IMovimentacaoController {
     return await this.movimentacaoService.create(movimentacaoDTO);
   }
 
-  async list() {
-    return await this.movimentacaoService.list();
+  async list(dataMovimentacao: IMovimentacaoQueryParams) {
+    return await this.movimentacaoService.list(dataMovimentacao);
   }
 
   async update(id: number, movimentacaoDTO: crateMovimentacaoDTO) {

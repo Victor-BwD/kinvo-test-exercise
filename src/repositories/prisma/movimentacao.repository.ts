@@ -1,5 +1,9 @@
 import { BasePrismaRepository } from "./base.prisma.repository";
-import { IMovimentacaoRepository, crateMovimentacaoDTO } from "./interfaces/movimentacao.repository.type";
+import {
+  IMovimentacaoQueryParams,
+  IMovimentacaoRepository,
+  crateMovimentacaoDTO
+} from "./interfaces/movimentacao.repository.type";
 
 class MovimentacaoRepository extends BasePrismaRepository implements IMovimentacaoRepository {
   async create(movimentacaoDTO: crateMovimentacaoDTO) {
@@ -25,8 +29,12 @@ class MovimentacaoRepository extends BasePrismaRepository implements IMovimentac
     return movimentacao;
   }
 
-  async list() {
-    return await this.prisma.movimentacoes.findMany();
+  async list(dataMovimentacao: IMovimentacaoQueryParams) {
+    return await this.prisma.movimentacoes.findMany({
+      where: {
+        data: dataMovimentacao.dataMovimentacao ? new Date(dataMovimentacao.dataMovimentacao) : undefined
+      }
+    });
   }
 
   async update(id: number, movimentacaoDTO: crateMovimentacaoDTO) {

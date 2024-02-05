@@ -17,7 +17,9 @@ movimentacaoRouter.post("/movimentacao", async (req, res) => {
 
 movimentacaoRouter.get("/movimentacao", async (req, res) => {
   try {
-    const movimentacao = await controller.list();
+    const dataMovimentacao = req.query;
+
+    const movimentacao = await controller.list(dataMovimentacao);
 
     return res.status(200).json(movimentacao);
   } catch (error: unknown) {
