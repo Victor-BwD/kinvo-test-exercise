@@ -24,6 +24,10 @@ class MovimentacaoServices implements IMovimentacaoService {
 
     return listMovimentacao;
   }
+
+  async update(id: number, movimentacaoDTO: crateMovimentacaoDTO) {
+    return await this.movimentacaoRepository.update(id, movimentacaoDTO);
+  }
 }
 
 export { MovimentacaoServices };

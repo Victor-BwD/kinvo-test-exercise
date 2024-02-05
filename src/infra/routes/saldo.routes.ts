@@ -15,4 +15,14 @@ saldoRoutes.post("/saldo", async (req, res) => {
   }
 });
 
+saldoRoutes.get("/saldo", async (req, res) => {
+  try {
+    const saldo = await controller.list();
+
+    return res.status(200).json(saldo);
+  } catch (error: unknown) {
+    return res.status(400).json(error as Error);
+  }
+});
+
 export { saldoRoutes };

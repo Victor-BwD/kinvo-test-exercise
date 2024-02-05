@@ -3,6 +3,7 @@ import { createSaldoDTO } from "../repositories/prisma/interfaces/saldo.reposito
 
 interface ISaldoService {
   create(saldoDTO: createSaldoDTO): Promise<saldo>;
+  list(): Promise<saldo[]>;
 }
 
 export { ISaldoService };

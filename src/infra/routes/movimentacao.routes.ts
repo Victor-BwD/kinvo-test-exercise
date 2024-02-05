@@ -25,4 +25,14 @@ movimentacaoRouter.get("/movimentacao", async (req, res) => {
   }
 });
 
+movimentacaoRouter.put("/movimentacao/:id", async (req, res) => {
+  try {
+    const movimentacao = await controller.update(Number(req.params.id), req.body);
+
+    return res.status(200).json(movimentacao);
+  } catch (error: unknown) {
+    return res.status(400).json(error as Error);
+  }
+});
+
 export { movimentacaoRouter };

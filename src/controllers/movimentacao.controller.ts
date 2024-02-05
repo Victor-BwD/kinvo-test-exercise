@@ -26,6 +26,10 @@ class MovimentacaoController implements IMovimentacaoController {
   async list() {
     return await this.movimentacaoService.list();
   }
+
+  async update(id: number, movimentacaoDTO: crateMovimentacaoDTO) {
+    return await this.movimentacaoService.update(id, movimentacaoDTO);
+  }
 }
 
 export { MovimentacaoController };
