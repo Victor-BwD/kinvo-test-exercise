@@ -1,11 +1,12 @@
 import { Router } from "express";
 import { SaldoController } from "../../controllers/saldo.controller";
+import { saldoUrls } from "../../config/constants/urls";
 
 const saldoRoutes = Router();
 
 const controller = new SaldoController();
 
-saldoRoutes.post("/saldo", async (req, res) => {
+saldoRoutes.post(saldoUrls.url, async (req, res) => {
   try {
     const deposito = await controller.create(req.body);
 
@@ -15,7 +16,7 @@ saldoRoutes.post("/saldo", async (req, res) => {
   }
 });
 
-saldoRoutes.get("/saldo", async (req, res) => {
+saldoRoutes.get(saldoUrls.url, async (req, res) => {
   try {
     const saldo = await controller.list();
 
@@ -25,7 +26,7 @@ saldoRoutes.get("/saldo", async (req, res) => {
   }
 });
 
-saldoRoutes.put("/saldo", async (req, res) => {
+saldoRoutes.put(saldoUrls.url, async (req, res) => {
   try {
     const saldo = await controller.update(req.body);
 
