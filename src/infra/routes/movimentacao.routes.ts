@@ -1,6 +1,8 @@
 import { Router } from "express";
 import { MovimentacaoController } from "../../controllers/movimentacao.controller";
 import { movimentacaoUrls } from "../../config/constants/urls";
+import { HttpStatus } from "../http/http.status";
+import handleError from "../../helpers/errors/handle-errors/handle.errors";
 
 const movimentacaoRouter = Router();
 
@@ -10,9 +12,9 @@ movimentacaoRouter.post(movimentacaoUrls.url, async (req, res) => {
   try {
     const movimentacao = await controller.create(req.body);
 
-    return res.status(201).json(movimentacao);
+    return res.status(HttpStatus.CREATED).json(movimentacao);
   } catch (error: unknown) {
-    return res.status(400).json(error as Error);
+    handleError(error as Error, res);
   }
 });
 
@@ -24,9 +26,9 @@ movimentacaoRouter.get(movimentacaoUrls.url, async (req, res) => {
 
     const movimentacao = await controller.list(dataMovimentacao, page, pageSize);
 
-    return res.status(200).json(movimentacao);
+    return res.status(HttpStatus.OK).json(movimentacao);
   } catch (error: unknown) {
-    return res.status(400).json(error as Error);
+    handleError(error as Error, res);
   }
 });
 
@@ -34,9 +36,9 @@ movimentacaoRouter.put(movimentacaoUrls.urlId, async (req, res) => {
   try {
     const movimentacao = await controller.update(Number(req.params.id), req.body);
 
-    return res.status(200).json(movimentacao);
+    return res.status(HttpStatus.OK).json(movimentacao);
   } catch (error: unknown) {
-    return res.status(400).json(error as Error);
+    handleError(error as Error, res);
   }
 });
 
