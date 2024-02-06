@@ -24,8 +24,8 @@ class MovimentacaoController implements IMovimentacaoController {
     return await this.movimentacaoService.create(movimentacaoDTO);
   }
 
-  async list(dataMovimentacao: IMovimentacaoQueryParams) {
-    return await this.movimentacaoService.list(dataMovimentacao);
+  async list(dataMovimentacao: IMovimentacaoQueryParams, page: number, pageSize: number) {
+    return await this.movimentacaoService.list(dataMovimentacao, page, pageSize);
   }
 
   async update(id: number, movimentacaoDTO: crateMovimentacaoDTO) {

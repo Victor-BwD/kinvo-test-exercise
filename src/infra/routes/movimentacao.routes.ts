@@ -18,8 +18,10 @@ movimentacaoRouter.post("/movimentacao", async (req, res) => {
 movimentacaoRouter.get("/movimentacao", async (req, res) => {
   try {
     const dataMovimentacao = req.query;
+    const page = parseInt(req.query.page as string) || 1;
+    const pageSize = parseInt(req.query.pageSize as string) || 10;
 
-    const movimentacao = await controller.list(dataMovimentacao);
+    const movimentacao = await controller.list(dataMovimentacao, page, pageSize);
 
     return res.status(200).json(movimentacao);
   } catch (error: unknown) {

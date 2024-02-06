@@ -6,7 +6,7 @@ import {
 
 interface IMovimentacaoService {
   create(movimentacaoDTO: crateMovimentacaoDTO): Promise<IMovimentacao>;
-  list(dataMovimentacao: IMovimentacaoQueryParams): Promise<IMovimentacao[]>;
+  list(dataMovimentacao: IMovimentacaoQueryParams, page: number, pageSize: number): Promise<IMovimentacao[]>;
   update(id: number, movimentacaoDTO: crateMovimentacaoDTO): Promise<IMovimentacao>;
 }
 

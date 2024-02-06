@@ -2,7 +2,7 @@ import { Movimentacoes, Tipo } from "@prisma/client";
 
 interface IMovimentacaoRepository {
   create(movimentacaoDTO: crateMovimentacaoDTO): Promise<Movimentacoes>;
-  list(dataMovimentacao: IMovimentacaoQueryParams): Promise<Movimentacoes[]>;
+  list(dataMovimentacao: IMovimentacaoQueryParams, page: number, pageSize: number): Promise<Movimentacoes[]>;
   update(id: number, movimentacaoDTO: crateMovimentacaoDTO): Promise<Movimentacoes>;
 }
 

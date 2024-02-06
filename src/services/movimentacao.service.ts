@@ -16,8 +16,8 @@ class MovimentacaoServices implements IMovimentacaoService {
     return await this.movimentacaoRepository.create(movimentacaoDTO);
   }
 
-  async list(dataMovimentacao: IMovimentacaoQueryParams) {
-    const listMovimentacao = await this.movimentacaoRepository.list(dataMovimentacao);
+  async list(dataMovimentacao: IMovimentacaoQueryParams, page: number, pageSize: number) {
+    const listMovimentacao = await this.movimentacaoRepository.list(dataMovimentacao, page, pageSize);
 
     if (listMovimentacao.length <= 0) {
       throw new Error("Nenhuma movimentação encontrada");

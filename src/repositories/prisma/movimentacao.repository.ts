@@ -29,11 +29,15 @@ class MovimentacaoRepository extends BasePrismaRepository implements IMovimentac
     return movimentacao;
   }
 
-  async list(dataMovimentacao: IMovimentacaoQueryParams) {
+  async list(dataMovimentacao: IMovimentacaoQueryParams, page: number, pageSize: number) {
+    const skipCount = (page - 1) * pageSize;
+
     return await this.prisma.movimentacoes.findMany({
       where: {
         data: dataMovimentacao.dataMovimentacao ? new Date(dataMovimentacao.dataMovimentacao) : undefined
-      }
+      },
+      skip: skipCount,
+      take: pageSize
     });
   }
 
