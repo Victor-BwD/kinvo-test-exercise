@@ -1,11 +1,12 @@
 import { Router } from "express";
 import { MovimentacaoController } from "../../controllers/movimentacao.controller";
+import { movimentacaoUrls } from "../../config/constants/urls";
 
 const movimentacaoRouter = Router();
 
 const controller = new MovimentacaoController();
 
-movimentacaoRouter.post("/movimentacao", async (req, res) => {
+movimentacaoRouter.post(movimentacaoUrls.url, async (req, res) => {
   try {
     const movimentacao = await controller.create(req.body);
 
@@ -15,7 +16,7 @@ movimentacaoRouter.post("/movimentacao", async (req, res) => {
   }
 });
 
-movimentacaoRouter.get("/movimentacao", async (req, res) => {
+movimentacaoRouter.get(movimentacaoUrls.url, async (req, res) => {
   try {
     const dataMovimentacao = req.query;
     const page = parseInt(req.query.page as string) || 1;
@@ -29,7 +30,7 @@ movimentacaoRouter.get("/movimentacao", async (req, res) => {
   }
 });
 
-movimentacaoRouter.put("/movimentacao/:id", async (req, res) => {
+movimentacaoRouter.put(movimentacaoUrls.urlId, async (req, res) => {
   try {
     const movimentacao = await controller.update(Number(req.params.id), req.body);
 

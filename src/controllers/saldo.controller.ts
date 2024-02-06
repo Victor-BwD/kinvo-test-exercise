@@ -21,6 +21,10 @@ class SaldoController {
   async list() {
     return await this.saldoService.list();
   }
+
+  async update(saldoDTO: createSaldoDTO) {
+    return await this.saldoService.update(saldoDTO);
+  }
 }
 
 export { SaldoController };

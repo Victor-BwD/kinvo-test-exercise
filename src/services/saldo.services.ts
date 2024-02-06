@@ -29,6 +29,14 @@ class SaldoServices {
 
     return listSaldo;
   }
+
+  async update(saldoDTO: createSaldoDTO) {
+    if (saldoDTO.valor < 0) {
+      throw new Error("Saldo não pode ser negativo");
+    }
+
+    return await this.saldoRepository.update(saldoDTO);
+  }
 }
 
 export { SaldoServices };

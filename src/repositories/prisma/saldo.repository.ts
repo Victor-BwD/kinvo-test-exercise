@@ -19,6 +19,25 @@ class SaldoRepository extends BasePrismaRepository implements ISaldoRepository {
   async count() {
     return await this.prisma.saldo.count();
   }
+
+  async update(saldoDTO: createSaldoDTO) {
+    const saldoAntigo = await this.prisma.saldo.findUnique({
+      where: { id: 1 }
+    });
+
+    if (!saldoAntigo) {
+      throw new Error("Movimentação não encontrada");
+    }
+
+    const increaseValue = saldoAntigo.valor + saldoDTO.valor;
+
+    return await this.prisma.saldo.update({
+      where: { id: 1 },
+      data: {
+        valor: increaseValue
+      }
+    });
+  }
 }
 
 export { SaldoRepository };
