@@ -9,3 +9,38 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum Tipo {
+  entrada
+  saida
+}
+
+model Movimentacoes {
+  id            Int       @id @default(autoincrement())
+  id_categoria  Int
+  descricao     String    @db.VarChar(120)
+  valor         Float
+  tipo          Tipo
+  data          DateTime  @db.Timestamp(0)
+  created_at    DateTime  @default(now())
+  updated_at    DateTime  @updatedAt
+  categorias    Categorias @relation(fields: [id_categoria], references: [id])
+
+  @@index([id_categoria], name: "tbl_movimentacoes_id_categoria_idx")
+  @@index([id], name: "tbl_movimentacoes_id_idx")
+}
+
+model Categorias {
+  id            Int       @id @default(autoincrement())
+  nome          String    @db.VarChar(15)
+  descricao     String    @db.VarChar(120)
+  created_at    DateTime  @default(now())
+  updated_at    DateTime  @updatedAt
+  movimentacoes Movimentacoes[]
+}
+
+model saldo {
+  id            Int       @id @default(autoincrement())
+  valor         Float
+  updated_at    DateTime  @updatedAt
+}
