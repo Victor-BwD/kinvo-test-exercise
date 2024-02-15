@@ -4,6 +4,8 @@ Project made with the purpose of studying Back-End. This project aims to organiz
 
 The software uses Postgres for data persistence and the Prisma ORM for queries, as well as express.js and typescript.
 
+Project source: https://github.com/kinvoapp/node.js-challenge
+
 ### Features
 
 - Express.js Framework: Utilizes Express.js to streamline route handling, middleware integration, and HTTP request/response processing.
